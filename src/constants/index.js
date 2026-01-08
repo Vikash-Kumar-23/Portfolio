@@ -25,10 +25,30 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 200, suffix: "+", label: "LeetCode Problems Solved" },
-  { value: 4, suffix: "+", label: "Full-Stack MEAN Projects" },
-  { value: 6, suffix: "+", label: "Technical Projects" },
-  { value: 15, suffix: "+", label: "Tech Skills" },
+  {
+    value: 200,
+    suffix: "+",
+    label: "LeetCode Problems Solved",
+    link: "https://leetcode.com/u/_vikash_kumar/",
+  },
+  {
+    value: 4,
+    suffix: "+",
+    label: "Full-Stack MEAN Projects",
+    link: "https://github.com/Vikash-Kumar-23?tab=repositories",
+  },
+  {
+    value: 6,
+    suffix: "+",
+    label: "Technical Projects",
+    link: "https://github.com/Vikash-Kumar-23?tab=repositories",
+  },
+  {
+    value: 15,
+    suffix: "+",
+    label: "Tech Skills",
+    link: "https://www.linkedin.com/in/vikash-kumar-4a4a39347/",
+  },
 ];
 
 const logoIconsList = [
