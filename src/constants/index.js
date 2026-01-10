@@ -89,19 +89,19 @@ const logoIconsList = [
 
 const abilities = [
   {
-    imgPath: "/images/seo.png",
-    title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    imgPath: "/images/full_stack.png",
+    title: "Full-Stack Development",
+    desc: "Building scalable, responsive web applications with modern architectures using React, Node.js, and client-side JavaScript.",
   },
   {
-    imgPath: "/images/chat.png",
-    title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    imgPath: "/images/ai1.png",
+    title: "Generative AI Engineering",
+    desc: "Building intelligent document processing pipelines using Gemini models, with robust context management and automated risk detection logic.",
   },
   {
-    imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    imgPath: "/images/DSA.png",
+    title: "Algorithmic Optimization",
+    desc: "Solving complex computational problems and optimizing performance using advanced Data Structures and Algorithms in C++.",
   },
 ];
 
@@ -120,8 +120,9 @@ const techStackImgs = [
   },
   {
     name: "DSA",
-    imgPath: "/images/logos/CppLogo.png",
-    scale: 8.5,
+    modelPath: "/models/c.glb",
+    scale: 0.1,
+    rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "GitHub",
@@ -150,7 +151,9 @@ const techStackIcons = [
   },
   {
     name: "DSA",
-    imgPath: "/images/logos/CppLogo.png",
+    modelPath: "/models/c.glb",
+    scale: 0.08,
+    rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "GitHub",

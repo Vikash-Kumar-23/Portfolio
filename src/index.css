@@ -165,10 +165,14 @@ section {
       @apply h-full flex flex-col justify-between xl:w-[60%];
 
       .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
+        @apply xl:h-[70vh] md:h-[50vh] h-96 relative transition-all duration-400 ease-in-out;
+
+        &:hover {
+          @apply shadow-[0_0_30px_rgba(255,255,255,0.15)];
+        }
 
         img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
+          @apply w-full h-full object-cover rounded-xl absolute inset-0 transition-all duration-400 ease-in-out;
         }
       }
 
@@ -189,16 +193,44 @@ section {
       @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
 
       .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
+        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0 transition-all duration-400 ease-in-out;
+
+        &:hover {
+          @apply shadow-[0_0_30px_rgba(255,255,255,0.15)];
+        }
       }
 
       img {
-        @apply w-full h-full object-contain rounded-xl;
+        @apply w-full h-full object-contain rounded-xl transition-all duration-400 ease-in-out;
       }
 
       h2 {
         @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
       }
+    }
+
+    .project-overlay {
+      @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-400 flex items-end p-8 md:p-12 pointer-events-none;
+    }
+
+    .group:hover .project-overlay {
+      @apply opacity-100;
+    }
+
+    .overlay-content {
+      @apply transform translate-y-10 transition-transform duration-400 ease-out;
+    }
+
+    .group:hover .overlay-content {
+      @apply translate-y-0;
+    }
+
+    .overlay-title {
+      @apply text-white mb-2;
+    }
+
+    .overlay-desc {
+      @apply text-white-50;
     }
   }
 
