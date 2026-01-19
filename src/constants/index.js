@@ -70,21 +70,6 @@ const logoIconsList = [
   {
     imgPath: "/images/logos/company-logo-6.png",
   },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
-  },
 ];
 
 const abilities = [
@@ -92,16 +77,23 @@ const abilities = [
     imgPath: "/images/full_stack.png",
     title: "Full-Stack Development",
     desc: "Building scalable, responsive web applications with modern architectures using React, Node.js, and client-side JavaScript.",
+    demoLink: "#",
+    demoText: "View Demo",
   },
   {
     imgPath: "/images/ai1.png",
     title: "Generative AI Engineering",
-    desc: "Building intelligent document processing pipelines using Gemini models, with robust context management and automated risk detection logic.",
+    desc: "Building intelligent document processing pipelines using Gemini models, with robust context management and automated risk detection logic. Experience with production-grade AI systems for legal document analysis and summarization.",
+    link: "https://legal-document-summarizer-project-nuaghjqlum4c5wk5l5tvwg.streamlit.app/",
+    isExternal: true,
+    ctaText: "View Live AI Legal Document Summarizer",
   },
   {
     imgPath: "/images/DSA.png",
     title: "Algorithmic Optimization",
-    desc: "Solving complex computational problems and optimizing performance using advanced Data Structures and Algorithms in C++.",
+    desc: "LeetCode Rating above 1700, placing me in the Top 10% of global LeetCode users. Strong problem-solving skills with consistent performance in Data Structures and Algorithms.",
+    link: "https://leetcode.com/u/_vikash_kumar/",
+    isExternal: true,
   },
 ];
 
@@ -165,15 +157,14 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Vikash brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    review: "This modern food platform connects hungry users with local restaurants via an Instagram-style video feed for frictionless discovery and ordering.",
     imgPath: "/images/exp1.png",
     logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
+    title: "Full Stack Project",
+    date: "December 2025",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Built a full-stack MERN application (React + Vite, Node.js, Express, MongoDB) with JWT authentication and role-based access control.",
+      "Designed scalable architecture with RESTful APIs, database modeling, and media handling for real-world deployment.",
     ],
   },
   {

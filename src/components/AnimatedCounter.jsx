@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -7,29 +7,27 @@ import { counterItems } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AnimatedCounter = () => {
+const AnimatedCounter = memo(() => {
   const counterRef = useRef(null);
   const countersRef = useRef([]);
 
   useGSAP(() => {
     countersRef.current.forEach((counter, index) => {
+      if (!counter) return;
       const numberElement = counter.querySelector(".counter-number");
       const item = counterItems[index];
 
-      // Set initial value to 0
       gsap.set(numberElement, { innerText: "0" });
 
-      // Create the counting animation
       gsap.to(numberElement, {
         innerText: item.value,
-        duration: 2.5,
-        ease: "power2.out",
-        snap: { innerText: 1 }, // Ensures whole numbers
+        duration: 2,
+        ease: "power3.out",
+        snap: { innerText: 1 },
         scrollTrigger: {
           trigger: "#counter",
-          start: "top center",
+          start: "top bottom-=100",
         },
-        // Add the suffix after counting is complete
         onComplete: () => {
           numberElement.textContent = `${item.value}${item.suffix}`;
         },
@@ -38,16 +36,16 @@ const AnimatedCounter = () => {
   }, []);
 
   return (
-    <div id="counter" ref={counterRef} className="padding-x-lg xl:mt-0 mt-32">
+    <div id="counter" ref={counterRef} className="padding-x-lg xl:mt-0 mt-32 will-change-transform">
       <div className="mx-auto grid-4-cols">
         {counterItems.map((item, index) => (
           <a
-            key={index}
+            key={`counter-${index}`}
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            ref={(el) => el && (countersRef.current[index] = el)}
-            className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-zinc-800 hover:shadow-2xl active:scale-95"
+            ref={(el) => (countersRef.current[index] = el)}
+            className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 will-change-transform"
           >
             <div className="counter-number text-white-50 text-5xl font-bold mb-2">
               0 {item.suffix}
@@ -58,6 +56,8 @@ const AnimatedCounter = () => {
       </div>
     </div>
   );
-};
+});
+
+AnimatedCounter.displayName = "AnimatedCounter";
 
 export default AnimatedCounter;

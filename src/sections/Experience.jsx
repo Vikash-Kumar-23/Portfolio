@@ -96,7 +96,7 @@ const Experience = () => {
     >
       <div className="w-full h-full md:px-20 px-5">
         <TitleHeader
-          title="Professional Work Experience"
+          title="Project Work Experience"
           sub="💼 My Career Overview"
         />
         <div className="mt-32 relative">
@@ -118,7 +118,17 @@ const Experience = () => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo" />
+                        {card.logoPath.includes("logo1.png") ? (
+                          <span className="text-red-600 font-bold text-2xl md:text-3xl font-sans">
+                            Z
+                          </span>
+                        ) : (
+                          <img
+                            src={card.logoPath}
+                            alt="logo"
+                            className="object-contain"
+                          />
+                        )}
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
