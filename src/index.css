@@ -282,6 +282,16 @@ section {
     @apply md:w-20 md:h-20 w-12 h-12 flex-none rounded-full flex justify-center items-center md:-translate-y-9 border border-black-50 bg-black-100;
   }
 
+  .instagram-logo-text {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
   .exp-card-wrapper {
     @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
   }

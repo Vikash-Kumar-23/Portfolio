@@ -38,9 +38,11 @@ const GlowCard = ({ card, index, children }) => {
           <img key={i} src="/images/star.png" alt="star" className="size-5" />
         ))}
       </div>
-      <div className="mb-5">
-        <p className="text-white-50 text-lg">{card.review}</p>
-      </div>
+      {card.review && (
+        <div className="mb-5">
+          <p className="text-white-50 text-lg">{card.review}</p>
+        </div>
+      )}
       {children}
     </div>
   );

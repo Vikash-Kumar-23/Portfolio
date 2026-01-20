@@ -106,7 +106,28 @@ const Experience = () => {
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
                     <div>
-                      <img src={card.imgPath} alt="exp-img" />
+                      {card.imgPath.includes("exp2.png") ? (
+                        <div className="space-y-5">
+                          <div>
+                            <p className="text-[#839CB5] italic text-sm mb-2">
+                              Problem Statement
+                            </p>
+                            <p className="text-white-50 text-base leading-relaxed">
+                              Building a core social media platform that allows
+                              users to securely connect, share visual content,
+                              and interact in real time—similar to Instagram’s
+                              essential features.
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-start h-10">
+                            <span className="instagram-logo-text text-5xl md:text-3xl">
+                              Instagram
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <img src={card.imgPath} alt="exp-img" />
+                      )}
                     </div>
                   </GlowCard>
                 </div>
@@ -119,7 +140,7 @@ const Experience = () => {
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
                         {card.logoPath.includes("logo1.png") ? (
-                          <span className="text-red-600 font-bold text-2xl md:text-3xl font-sans">
+                          <span className="text-red-600 font-bold text-2xl md:text-5xl font-sans">
                             Z
                           </span>
                         ) : (
