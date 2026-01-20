@@ -10,83 +10,68 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
   useGSAP(() => {
-    // Loop through each timeline card and animate them in
-    // as the user scrolls to each card
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
-      // Animate the card coming in from the left
-      // and fade in
-      gsap.from(card, {
-        // Move the card in from the left
-        xPercent: -100,
-        // Make the card invisible at the start
-        opacity: 0,
-        // Set the origin of the animation to the left side of the card
-        transformOrigin: "left left",
-        // Animate over 1 second
-        duration: 1,
-        // Use a power2 ease-in-out curve
-        ease: "power2.inOut",
-        // Trigger the animation when the card is 80% of the way down the screen
+    // Select all experience card wrappers
+    const wrappers = gsap.utils.toArray(".exp-card-wrapper");
+
+    wrappers.forEach((wrapper, index) => {
+      const gradientLine = wrapper.querySelector(".gradient-line");
+      const logo = wrapper.querySelector(".timeline-logo");
+      const card = wrapper.querySelector(".timeline-card");
+      const text = wrapper.querySelector(".expText > div:last-child");
+
+      // 1. The Vertical Line: Growth animation
+      gsap.fromTo(
+        gradientLine,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          transformOrigin: "top center",
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top 80%",
+            end: "bottom 80%",
+            scrub: 0.5,
+          },
+        }
+      );
+
+      // 2. Staggered Content Animation (Flow effect)
+      const tl = gsap.timeline({
         scrollTrigger: {
-          // The card is the trigger element
-          trigger: card,
-          // Trigger the animation when the card is 80% down the screen
-          start: "top 80%",
+          trigger: wrapper,
+          start: "top 70%",
+          toggleActions: "play none none reverse",
         },
       });
-    });
 
-    // Animate the timeline height as the user scrolls
-    // from the top of the timeline to 70% down the screen
-    // The timeline height should scale down from 1 to 0
-    // as the user scrolls up the screen
-    gsap.to(".timeline", {
-      // Set the origin of the animation to the bottom of the timeline
-      transformOrigin: "bottom bottom",
-      // Animate the timeline height over 1 second
-      ease: "power1.inOut",
-      // Trigger the animation when the timeline is at the top of the screen
-      // and end it when the timeline is at 70% down the screen
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top center",
-        end: "70% center",
-        // Update the animation as the user scrolls
-        onUpdate: (self) => {
-          // Scale the timeline height as the user scrolls
-          // from 1 to 0 as the user scrolls up the screen
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
-        },
-      },
-    });
-
-    // Loop through each expText element and animate them in
-    // as the user scrolls to each text element
-    gsap.utils.toArray(".expText").forEach((text) => {
-      // Animate the text opacity from 0 to 1
-      // and move it from the left to its final position
-      // over 1 second with a power2 ease-in-out curve
-      gsap.from(text, {
-        // Set the opacity of the text to 0
+      tl.from(logo, {
+        scale: 0,
         opacity: 0,
-        // Move the text from the left to its final position
-        // (xPercent: 0 means the text is at its final position)
-        xPercent: 0,
-        // Animate over 1 second
-        duration: 1,
-        // Use a power2 ease-in-out curve
-        ease: "power2.inOut",
-        // Trigger the animation when the text is 60% down the screen
-        scrollTrigger: {
-          // The text is the trigger element
-          trigger: text,
-          // Trigger the animation when the text is 60% down the screen
-          start: "top 60%",
-        },
-      });
-    }, "<"); // position parameter - insert at the start of the animation
+        duration: 0.6,
+        ease: "back.out(1.7)",
+      })
+        .from(
+          card,
+          {
+            x: -100,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .from(
+          text,
+          {
+            x: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.8"
+        );
+    });
   }, []);
 
   return (
@@ -125,16 +110,44 @@ const Experience = () => {
                             </span>
                           </div>
                         </div>
+                      ) : card.imgPath.includes("exp3.png") ? (
+                        <div className="space-y-5">
+                          <div>
+                            <p className="text-[#839CB5] italic text-sm mb-2">
+                              Problem Statement
+                            </p>
+                            <p className="text-white-50 text-base leading-relaxed">
+                              This app tackles the problem of quickly
+                              understanding complex legal documents by
+                              extracting their text, generating an executive
+                              summary, and highlighting potential risks or
+                              liabilities—allowing non-experts to identify key
+                              obligations and red flags without reading every
+                              clause.
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-start h-10">
+                            <span className="font-bold text-5xl md:text-3xl tracking-tighter font-sans">
+                              <span className="text-[#3776AB]">Py</span>
+                              <span className="text-[#FFD43B]">thon</span>
+                            </span>
+                          </div>
+                        </div>
                       ) : (
-                        <img src={card.imgPath} alt="exp-img" />
+                        <div className="flex items-center justify-start">
+                          <img
+                            src={card.imgPath}
+                            alt="exp-img"
+                            className="md:h-10 h-8 object-contain rounded-md"
+                          />
+                        </div>
                       )}
                     </div>
                   </GlowCard>
                 </div>
                 <div className="xl:w-4/6">
                   <div className="flex items-start">
-                    <div className="timeline-wrapper">
-                      <div className="timeline" />
+                    <div className="timeline-wrapper z-10">
                       <div className="gradient-line w-1 h-full" />
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
@@ -156,10 +169,14 @@ const Experience = () => {
                         <p className="my-5 text-white-50">
                           🗓️&nbsp;{card.date}
                         </p>
-                        <p className="text-[#839CB5] italic">
-                          Responsibilities
-                        </p>
-                        <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                        {!(card.imgPath.includes("exp2.png") || card.imgPath.includes("exp3.png")) && (
+                          <p className="text-[#839CB5] italic">
+                            Responsibilities
+                          </p>
+                        )}
+                        <ul className={`list-disc ms-5 flex flex-col gap-5 text-white-50 ${
+                          (card.imgPath.includes("exp2.png") || card.imgPath.includes("exp3.png")) ? "" : "mt-5"
+                        }`}>
                           {card.responsibilities.map(
                             (responsibility, index) => (
                               <li key={index} className="text-lg">
