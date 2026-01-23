@@ -6,4 +6,17 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig(({ command }) => ({
   base: command === "serve" ? "/" : "/Portfolio/",
   plugins: [react(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "three-vendor": ["three"],
+          "react-vendor": ["react", "react-dom"],
+          "gsap-vendor": ["gsap", "@gsap/react"],
+          "r3f-vendor": ["@react-three/fiber", "@react-three/drei"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 }));
