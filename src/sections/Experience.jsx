@@ -29,7 +29,7 @@ const Experience = () => {
           ease: "none",
           scrollTrigger: {
             trigger: wrapper,
-            start: "top 80%",
+            start: index === 0 ? "top 50%" : "top 80%",
             end: "bottom 80%",
             scrub: 0.5,
           },

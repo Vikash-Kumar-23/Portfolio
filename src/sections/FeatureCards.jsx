@@ -7,8 +7,19 @@ const FeatureCards = () => (
         const defaultCtaText = "Visit Profile";
         const displayCtaText = ctaText || (isExternal ? defaultCtaText : null);
 
-        const CardContent = (
-          <>
+        const baseClasses = "card-border rounded-xl p-8 flex flex-col gap-4 transition-all duration-300";
+        const hoverClasses = isExternal ? "hover:border-blue-300 hover:bg-black-50 cursor-pointer group" : "";
+
+        return (
+          <div
+            key={title}
+            className={`${baseClasses} ${hoverClasses}`}
+            onClick={() => {
+              if (link) {
+                window.open(link, isExternal ? "_blank" : "_self");
+              }
+            }}
+          >
             <div className="size-14 flex items-center justify-center rounded-full">
               <img src={imgPath} alt={title} />
             </div>
@@ -16,52 +27,24 @@ const FeatureCards = () => (
             <p className="text-white-50 text-lg">{desc}</p>
             <div className="flex flex-col gap-2 mt-2">
               {displayCtaText && (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   className="text-sm text-blue-300 hover:text-blue-200 transition-colors duration-300 flex items-center gap-1"
                 >
                   <span>→ {displayCtaText}</span>
-                </a>
+                </div>
               )}
               {demoLink && demoText && (
-                <a
-                  href={demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   className="text-sm text-blue-300 hover:text-blue-200 transition-colors duration-300 flex items-center gap-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(demoLink, "_blank");
+                  }}
                 >
                   <span>→ {demoText}</span>
-                </a>
+                </div>
               )}
             </div>
-          </>
-        );
-
-        const baseClasses = "card-border rounded-xl p-8 flex flex-col gap-4 transition-all duration-300";
-        const hoverClasses = isExternal ? "hover:border-blue-300 hover:bg-black-50 cursor-pointer group" : "";
-
-        if (link) {
-          return (
-            <a
-              key={title}
-              href={link}
-              target={isExternal ? "_blank" : "_self"}
-              rel={isExternal ? "noopener noreferrer" : ""}
-              className={`${baseClasses} ${hoverClasses}`}
-            >
-              {CardContent}
-            </a>
-          );
-        }
-
-        return (
-          <div
-            key={title}
-            className={baseClasses}
-          >
-            {CardContent}
           </div>
         );
       })}
