@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/Portfolio/images/logos/vik3.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vikash Portfolio</title>
+    <script>
+      // SPA routing fallback for GitHub Pages
+      // When GitHub Pages returns 404, redirect to index.html with the original URL
+      var pathSegments = window.location.pathname.split('/').filter(Boolean);
+      var basePath = '/Portfolio/';
+      
+      // If the request is within /Portfolio/ path, redirect to index.html
+      if (pathSegments[0] === 'Portfolio') {
+        window.location.href = basePath;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <p>Redirecting...</p>
+  </body>
+</html>
