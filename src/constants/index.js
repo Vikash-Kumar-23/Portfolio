@@ -1,3 +1,5 @@
+import { getAssetPath } from "../utils/assetPath";
+
 const navLinks = [
   {
     name: "Work",
@@ -14,10 +16,10 @@ const navLinks = [
 ];
 
 const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Ideas", imgPath: getAssetPath("/images/ideas.svg") },
+  { text: "Concepts", imgPath: getAssetPath("/images/concepts.svg") },
+  { text: "Designs", imgPath: getAssetPath("/images/designs.svg") },
+  { text: "Code", imgPath: getAssetPath("/images/code.svg") },
 ];
 
 const counterItems = [
@@ -49,35 +51,35 @@ const counterItems = [
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/company-logo-1.png",
+    imgPath: getAssetPath("/images/logos/company-logo-1.png"),
   },
   {
-    imgPath: "/images/logos/company-logo-2.png",
+    imgPath: getAssetPath("/images/logos/company-logo-2.png"),
   },
   {
-    imgPath: "/images/logos/company-logo-3.png",
+    imgPath: getAssetPath("/images/logos/company-logo-3.png"),
   },
   {
-    imgPath: "/images/logos/company-logo-4.png",
+    imgPath: getAssetPath("/images/logos/company-logo-4.png"),
   },
   {
-    imgPath: "/images/logos/company-logo-5.png",
+    imgPath: getAssetPath("/images/logos/company-logo-5.png"),
   },
   {
-    imgPath: "/images/logos/company-logo-6.png",
+    imgPath: getAssetPath("/images/logos/company-logo-6.png"),
   },
 ];
 
 const abilities = [
   {
-    imgPath: "/images/full_stack.png",
+    imgPath: getAssetPath("/images/full_stack.png"),
     title: "Full-Stack Development",
     desc: "Building scalable, responsive web applications with modern architectures using React, Node.js, and client-side JavaScript.",
     demoLink: "#",
     demoText: "View Demo",
   },
   {
-    imgPath: "/images/ai1.png",
+    imgPath: getAssetPath("/images/ai1.png"),
     title: "Generative AI Engineering",
     desc: "Building intelligent document processing pipelines using Gemini models, with robust context management and automated risk detection logic. Experience with production-grade AI systems for legal document analysis and summarization.",
     link: "https://legal-document-summarizer-project-nuaghjqlum4c5wk5l5tvwg.streamlit.app/",
@@ -85,7 +87,7 @@ const abilities = [
     ctaText: "View Live AI Legal Document Summarizer",
   },
   {
-    imgPath: "/images/DSA.png",
+    imgPath: getAssetPath("/images/DSA.png"),
     title: "Algorithmic Optimization",
     desc: "LeetCode Rating above 1700, placing me in the Top 10% of global LeetCode users. Strong problem-solving skills with consistent performance in Data Structures and Algorithms.",
     link: "https://leetcode.com/u/_vikash_kumar/",
@@ -96,56 +98,56 @@ const abilities = [
 const techStackImgs = [
   {
     name: "React Developer",
-    imgPath: "/images/logos/react.png",
+    imgPath: getAssetPath("/images/logos/react.png"),
   },
   {
     name: "Data Scientist",
-    imgPath: "/images/logos/python.svg",
+    imgPath: getAssetPath("/images/logos/python.svg"),
   },
   {
     name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
+    imgPath: getAssetPath("/images/logos/node.png"),
   },
   {
     name: "DSA",
-    modelPath: "/models/c.glb",
+    modelPath: getAssetPath("/models/c.glb"),
     scale: 0.1,
     rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "GitHub",
-    imgPath: "/images/logos/git.svg",
+    imgPath: getAssetPath("/images/logos/git.svg"),
   },
 ];
 
 const techStackIcons = [
   {
     name: "React Developer",
-    modelPath: "/models/react_logo-transformed.glb",
+    modelPath: getAssetPath("/models/react_logo-transformed.glb"),
     scale: 1,
     rotation: [0, 0, 0],
   },
   {
     name: "Data Scientist",
-    modelPath: "/models/python-transformed.glb",
+    modelPath: getAssetPath("/models/python-transformed.glb"),
     scale: 0.8,
     rotation: [0, 0, 0],
   },
   {
     name: "Backend Developer",
-    modelPath: "/models/node-transformed.glb",
+    modelPath: getAssetPath("/models/node-transformed.glb"),
     scale: 5,
     rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "DSA",
-    modelPath: "/models/c.glb",
+    modelPath: getAssetPath("/models/c.glb"),
     scale: 0.08,
     rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "GitHub",
-    modelPath: "/models/git-svg-transformed.glb",
+    modelPath: getAssetPath("/models/git-svg-transformed.glb"),
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
   },
@@ -154,8 +156,8 @@ const techStackIcons = [
 const expCards = [
   {
     review: "This modern food platform connects hungry users with local restaurants via an Instagram-style video feed for frictionless discovery and ordering.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
+    imgPath: getAssetPath("/images/exp1.png"),
+    logoPath: getAssetPath("/images/logo1.png"),
     title: "Full Stack Project",
     date: "December 2025",
     responsibilities: [
@@ -165,8 +167,8 @@ const expCards = [
   },
   {
     review: "",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+    imgPath: getAssetPath("/images/exp2.png"),
+    logoPath: getAssetPath("/images/logo2.png"),
     title: "Full Stack Developer",
     date: "March 2025",
     responsibilities: [
@@ -177,8 +179,8 @@ const expCards = [
   },
   {
     review: "",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
+    imgPath: getAssetPath("/images/exp3.png"),
+    logoPath: getAssetPath("/images/logo3.png"),
     title: "Gen AI Project",
     date: "January 2026",
     responsibilities: [
@@ -192,15 +194,15 @@ const expCards = [
 const expLogos = [
   {
     name: "logo1",
-    imgPath: "/images/logo1.png",
+    imgPath: getAssetPath("/images/logo1.png"),
   },
   {
     name: "logo2",
-    imgPath: "/images/logo2.png",
+    imgPath: getAssetPath("/images/logo2.png"),
   },
   {
     name: "logo3",
-    imgPath: "/images/logo3.png",
+    imgPath: getAssetPath("/images/logo3.png"),
   },
 ];
 
@@ -210,57 +212,57 @@ const testimonials = [
     mentions: "@estherhoward",
     review:
       "I can’t say enough good things about Vikash. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-    imgPath: "/images/client1.png",
+    imgPath: getAssetPath("/images/client1.png"),
   },
   {
     name: "Wade Warren",
     mentions: "@wadewarren",
     review:
       "Working with Vikash was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/client3.png",
+    imgPath: getAssetPath("/images/client3.png"),
   },
   {
     name: "Guy Hawkins",
     mentions: "@guyhawkins",
     review:
       "Collaborating with Vikash was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Vikash's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Vikash is the ideal partner.",
-    imgPath: "/images/client2.png",
+    imgPath: getAssetPath("/images/client2.png"),
   },
   {
     name: "Marvin McKinney",
     mentions: "@marvinmckinney",
     review:
       "Vikash was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-    imgPath: "/images/client5.png",
+    imgPath: getAssetPath("/images/client5.png"),
   },
   {
     name: "Floyd Miles",
     mentions: "@floydmiles",
     review:
       "Vikash’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-    imgPath: "/images/client4.png",
+    imgPath: getAssetPath("/images/client4.png"),
   },
   {
     name: "Albert Flores",
     mentions: "@albertflores",
     review:
       "Vikash was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/client6.png",
+    imgPath: getAssetPath("/images/client6.png"),
   },
 ];
 
 const socialImgs = [
   {
     name: "github",
-    imgPath: "/images/logos/git.svg",
+    imgPath: getAssetPath("/images/logos/git.svg"),
   },
   {
     name: "x",
-    imgPath: "/images/x.png",
+    imgPath: getAssetPath("/images/x.png"),
   },
   {
     name: "linkedin",
-    imgPath: "/images/linkedin.png",
+    imgPath: getAssetPath("/images/linkedin.png"),
   },
 ];
 

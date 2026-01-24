@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
-  base: command === "serve" ? "/" : "/Portfolio/",
+export default defineConfig(({ command, mode }) => ({
+  base: mode === "development" ? "/" : "/Portfolio/",
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {

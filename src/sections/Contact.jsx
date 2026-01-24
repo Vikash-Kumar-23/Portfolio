@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
+import { getAssetPath } from "../utils/assetPath";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -100,7 +101,7 @@ const Contact = () => {
                       {loading ? "Sending..." : "Send Message"}
                     </p>
                     <div className="arrow-wrapper">
-                      <img src="/images/arrow-down.svg" alt="arrow" />
+                      <img src={getAssetPath("/images/arrow-down.svg")} alt="arrow" />
                     </div>
                   </div>
                 </button>

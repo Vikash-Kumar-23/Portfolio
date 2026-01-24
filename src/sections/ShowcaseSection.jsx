@@ -2,6 +2,7 @@ import { useRef, memo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { getAssetPath } from "../utils/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,7 @@ const AppShowcase = memo(() => {
             >
               <div className="image-wrapper overflow-hidden rounded-xl relative">
                 <img 
-                  src="/images/project1.png" 
+                  src={getAssetPath("/images/project1.png")} 
                   alt="Reels-Style Food Delivery App" 
                   loading="lazy"
                   decoding="async"
@@ -92,7 +93,7 @@ const AppShowcase = memo(() => {
               >
                 <div className="image-wrapper bg-[#FFEFDB] overflow-hidden rounded-xl relative">
                   <img
-                    src="/images/project2.png"
+                    src={getAssetPath("/images/project2.png")}
                     alt="Instagram Clone Backend"
                     loading="lazy"
                     decoding="async"
@@ -119,7 +120,7 @@ const AppShowcase = memo(() => {
               >
                 <div className="image-wrapper bg-[#FFE7EB] overflow-hidden rounded-xl relative">
                   <img 
-                    src="/images/project3.png" 
+                    src={getAssetPath("/images/project3.png")} 
                     alt="AI Legal Assistant" 
                     loading="lazy"
                     decoding="async"
