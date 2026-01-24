@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vikash Portfolio</title>
     <script>
-      // SPA routing fallback for GitHub Pages
-      // When GitHub Pages returns 404, redirect to index.html with the original URL
+      // SPA fallback for GitHub Pages
+      // Redirect any 404 to the index.html which React Router will handle
       var pathSegments = window.location.pathname.split('/').filter(Boolean);
-      var basePath = '/Portfolio/';
       
-      // If the request is within /Portfolio/ path, redirect to index.html
-      if (pathSegments[0] === 'Portfolio') {
-        window.location.href = basePath;
+      // Always redirect to Portfolio base if within that path
+      if (pathSegments.length > 0) {
+        window.location.href = '/Portfolio/';
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <p>Redirecting...</p>
+    <p>Redirecting to portfolio...</p>
   </body>
 </html>
