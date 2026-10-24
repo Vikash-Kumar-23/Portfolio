@@ -7,10 +7,10 @@ const TechIconImageCard = ({ icon }) => {
   const position = icon.position || [0, 0, 0];
 
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+    <Canvas frameloop="demand" dpr={[1, 1.5]} camera={{ position: [0, 0, 5], fov: 50 }}>
       <ambientLight intensity={1.5} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
-      <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
+      <Float enabled={false}>
         <Image
           url={icon.imgPath}
           scale={[scale, scale, 1]}

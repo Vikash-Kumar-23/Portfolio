@@ -9,12 +9,32 @@ import { getAssetPath } from "../utils/assetPath";
 
 const Hero = () => {
   useGSAP(() => {
-    gsap.fromTo(
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.fromTo(
       ".hero-text h1",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
-    );
-  });
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.15, duration: 1.1 }
+    )
+      .fromTo(
+        ".hero-desc",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.6"
+      )
+      .fromTo(
+        ".hero-cta-btn",
+        { y: 20, opacity: 0, scale: 0.95 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.4)" },
+        "-=0.5"
+      )
+      .fromTo(
+        ".hero-3d-layout",
+        { opacity: 0, scale: 0.94 },
+        { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
+        "-=0.8"
+      );
+  }, []);
 
   return (
     <section id="hero" className="relative overflow-hidden">
@@ -24,9 +44,9 @@ const Hero = () => {
 
       <div className="hero-layout">
         {/* LEFT: Hero Content */}
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
-          <div className="flex flex-col gap-7">
-            <div className="hero-text">
+        <header className="flex flex-col justify-center w-full md:px-20 px-5 relative z-20 pointer-events-none">
+          <div className="flex flex-col gap-7 items-start max-w-xl xl:max-w-2xl pointer-events-none">
+            <div className="hero-text pointer-events-none">
               <h1>
                 Shaping
                 <span className="slide">
@@ -51,21 +71,23 @@ const Hero = () => {
               <h1>that Deliver Results</h1>
             </div>
 
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
+            <p className="hero-desc text-white-50 md:text-xl relative z-10 pointer-events-none max-w-lg">
               Hi, I’m Vikash, a VJTI student with a genuine passion for coding and a drive to build impactful technical solutions.
             </p>
 
-            <Button
-              text="See My Work"
-              className="md:w-80 md:h-16 w-60 h-12"
-              id="counter"
-            />
+            <div className="hero-cta-btn w-fit pointer-events-auto">
+              <Button
+                text="See My Work"
+                className="w-52 h-12 md:w-60 md:h-14"
+                id="hero-see-work-btn"
+              />
+            </div>
           </div>
         </header>
 
         {/* RIGHT: 3D Model or Visual */}
-        <figure>
-          <div className="hero-3d-layout">
+        <figure className="pointer-events-auto">
+          <div className="hero-3d-layout pointer-events-auto">
             <HeroExperience />
           </div>
         </figure>

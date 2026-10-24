@@ -1,4 +1,4 @@
-import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
+import { Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
 import * as THREE from "three";
@@ -16,10 +16,11 @@ const TechIconCardExperience = ({ model }) => {
         }
       });
     }
-  }, [scene]);
+  }, [model.name, scene]);
 
+  // These below-the-fold cards do not need dedicated 60fps render loops.
   return (
-    <Canvas>
+    <Canvas frameloop="demand" dpr={[1, 1.5]}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <spotLight
@@ -28,8 +29,6 @@ const TechIconCardExperience = ({ model }) => {
         penumbra={1}
         intensity={2}
       />
-      <Environment preset="city" />
-
       {/* 
         The Float component from @react-three/drei is used to 
         create a simple animation of the model floating in space.
@@ -47,7 +46,7 @@ const TechIconCardExperience = ({ model }) => {
         THREE.Group object contains all the objects (meshes, lights, etc)
         that make up the 3D model.
       */}
-      <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
+      <Float enabled={false}>
         <group scale={model.scale} rotation={model.rotation}>
           <primitive object={scene.scene} />
         </group>

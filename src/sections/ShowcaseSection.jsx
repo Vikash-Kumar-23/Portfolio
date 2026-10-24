@@ -13,14 +13,6 @@ const AppShowcase = memo(() => {
   const ycDirectoryRef = useRef(null);
 
   useGSAP(() => {
-    // Animation for the main section
-    gsap.fromTo(
-      sectionRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.5 }
-    );
-
-    // Animations for each app showcase
     const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
 
     cards.forEach((card, index) => {
@@ -28,18 +20,21 @@ const AppShowcase = memo(() => {
       gsap.fromTo(
         card,
         {
-          y: 50,
+          y: 35,
           opacity: 0,
+          scale: 0.98,
         },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          delay: 0.3 * (index + 1),
+          scale: 1,
+          duration: 0.9,
+          delay: index === 0 ? 0 : (index - 1) * 0.15,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top bottom-=100",
-            toggleActions: "play none none reverse",
+            start: "top 88%",
+            once: true,
           },
         }
       );
@@ -52,33 +47,33 @@ const AppShowcase = memo(() => {
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper group">
             <a 
-              href="https://github.com/Vikash-Kumar-23/Zomato-MERN-Project" 
+              href="https://vikash-kumar-23.github.io/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="block cursor-pointer"
             >
-              <div className="image-wrapper overflow-hidden rounded-xl relative">
+              <div className="image-wrapper bg-[#14151a] overflow-hidden rounded-xl relative flex items-center justify-center p-3 md:p-6">
                 <img 
-                  src={getAssetPath("/images/project1.png")} 
-                  alt="Reels-Style Food Delivery App" 
+                  src={getAssetPath("/images/gsoc-certificate.png")} 
+                  alt="Google Summer of Code 2026 Certificate" 
                   loading="lazy"
                   decoding="async"
-                  className="transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform"
+                  className="transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform !object-contain w-full h-full"
                 />
                 <div className="project-overlay will-change-[opacity]">
                   <div className="overlay-content will-change-transform">
-                    <h2 className="overlay-title text-2xl md:text-3xl font-bold">Food Delivery App</h2>
-                    <p className="overlay-desc text-white-50 text-sm md:text-base">Reels-style food discovery with MERN Stack.</p>
+                    <h2 className="overlay-title text-2xl md:text-3xl font-bold">Google Summer of Code &apos;26</h2>
+                    <p className="overlay-desc text-white-50 text-sm md:text-base">NumFOCUS &bull; Open Source Developer</p>
                   </div>
                 </div>
               </div>
             </a>
             <div className="text-content">
               <h2 className="mt-2">
-                A modern food discovery and delivery platform inspired by Zomato and Instagram Reels.
+                Google Summer of Code &apos;26 – NumFOCUS &amp; Open Source
               </h2>
               <p className="text-white-50 md:text-xl">
-                Users explore food through a vertical, scrollable video feed instead of static menus.
+                Contributed to major open-source ecosystems including NumFOCUS, Matplotlib, CPython, and Mypy.
               </p>
             </div>
           </div>
@@ -86,29 +81,29 @@ const AppShowcase = memo(() => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project group" ref={libraryRef}>
               <a 
-                href="https://github.com/Vikash-Kumar-23/Instagram-clone" 
+                href="https://github.com/Vikash-Kumar-23/Zomato-MERN-Project" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block cursor-pointer"
               >
                 <div className="image-wrapper bg-[#FFEFDB] overflow-hidden rounded-xl relative">
                   <img
-                    src={getAssetPath("/images/project2.png")}
-                    alt="Instagram Clone Backend"
+                    src={getAssetPath("/images/project1.png")}
+                    alt="Reels-Style Food Delivery App"
                     loading="lazy"
                     decoding="async"
-                    className="transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform"
+                    className="transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform !object-cover w-full h-full"
                   />
                   <div className="project-overlay will-change-[opacity]">
                     <div className="overlay-content will-change-transform">
-                      <h2 className="overlay-title text-xl font-bold">Instagram Clone</h2>
-                      <p className="overlay-desc text-white-50 text-xs md:text-sm">Backend-Focused Tutorial Project</p>
-                      <p className="text-white-50 text-[10px] mt-2 line-clamp-2">Built to demonstrate core social media features such as user authentication and profile management.</p>
+                      <h2 className="overlay-title text-xl font-bold">Food Delivery App</h2>
+                      <p className="overlay-desc text-white-50 text-xs md:text-sm">Zomato &amp; Reels-Style MERN Platform</p>
+                      <p className="text-white-50 text-[10px] mt-2 line-clamp-2">A modern food discovery and delivery platform inspired by Zomato and Instagram Reels.</p>
                     </div>
                   </div>
                 </div>
               </a>
-              <h2>Instagram Clone – Backend Development</h2>
+              <h2>Food Delivery App – Zomato &amp; Reels</h2>
             </div>
 
             <div className="project group" ref={ycDirectoryRef}>
@@ -139,6 +134,7 @@ const AppShowcase = memo(() => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

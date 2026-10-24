@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
-import { getAssetPath } from "../utils/assetPath";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -13,6 +14,42 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
+  useGSAP(() => {
+    gsap.fromTo(
+      ".contact-form-card",
+      { x: -25, opacity: 0, scale: 0.98 },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.85,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".contact-3d-wrapper",
+      { x: 25, opacity: 0, scale: 0.98 },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.85,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +85,7 @@ const Contact = () => {
           sub="💬 Have questions or ideas? Let’s talk! 🚀"
         />
         <div className="grid-12-cols mt-16">
-          <div className="xl:col-span-5">
+          <div className="xl:col-span-5 contact-form-card">
             <div className="flex-center card-border rounded-xl p-10">
               <form
                 ref={formRef}
@@ -94,22 +131,56 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit">
-                  <div className="cta-button group">
-                    <div className="bg-circle" />
-                    <p className="text">
-                      {loading ? "Sending..." : "Send Message"}
-                    </p>
-                    <div className="arrow-wrapper">
-                      <img src={getAssetPath("/images/arrow-down.svg")} alt="arrow" />
-                    </div>
-                  </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-4 px-8 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:via-indigo-500 hover:to-blue-400 active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group border border-white/10"
+                >
+                  <span className="text-base tracking-wide font-medium">
+                    {loading ? "Sending..." : "Send Message"}
+                  </span>
+                  {loading ? (
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5 text-white transform group-hover:translate-x-1.5 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  )}
                 </button>
               </form>
             </div>
           </div>
-          <div className="xl:col-span-7 min-h-96">
-            <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
+          <div className="xl:col-span-7 min-h-96 contact-3d-wrapper">
+            <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden shadow-2xl">
               <ContactExperience />
             </div>
           </div>

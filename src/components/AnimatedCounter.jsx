@@ -12,6 +12,25 @@ const AnimatedCounter = memo(() => {
   const countersRef = useRef([]);
 
   useGSAP(() => {
+    if (!counterRef.current) return;
+
+    gsap.fromTo(
+      countersRef.current,
+      { y: 30, opacity: 0, scale: 0.96 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: counterRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+
     countersRef.current.forEach((counter, index) => {
       if (!counter) return;
       const numberElement = counter.querySelector(".counter-number");
@@ -22,11 +41,11 @@ const AnimatedCounter = memo(() => {
       gsap.to(numberElement, {
         innerText: item.value,
         duration: 2,
-        ease: "power3.out",
+        ease: "power2.out",
         snap: { innerText: 1 },
         scrollTrigger: {
-          trigger: "#counter",
-          start: "top bottom-=100",
+          trigger: counterRef.current,
+          start: "top 85%",
         },
         onComplete: () => {
           numberElement.textContent = `${item.value}${item.suffix}`;
