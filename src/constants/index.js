@@ -179,6 +179,7 @@ const expCards = [
     logoPath: getAssetPath("/images/logo1.png"),
     title: "Full Stack Project",
     date: "December 2025",
+    liveDemoLink: "https://zomato-frontend-wheat.vercel.app/",
     responsibilities: [
       "Built a full-stack MERN application (React + Vite, Node.js, Express, MongoDB) with JWT authentication and role-based access control.",
       "Designed scalable architecture with RESTful APIs, database modeling, and media handling for real-world deployment.",

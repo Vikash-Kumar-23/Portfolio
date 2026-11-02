@@ -199,6 +199,23 @@ const Experience = () => {
                             </span>
                           </div>
                         </div>
+                      ) : card.imgPath.includes("exp1.png") ? (
+                        <div className="space-y-5">
+                          <div className="flex items-center justify-start h-10">
+                            <span className="text-red-500 font-bold text-5xl md:text-3xl tracking-tight">
+                              zomato
+                            </span>
+                          </div>
+                          <a
+                            href={card.liveDemoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-50 pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-400 hover:to-orange-400 transition-all shadow-md cursor-pointer hover:scale-[1.02]"
+                            aria-label="Open Zomato live demo"
+                          >
+                            Live Demo <span aria-hidden="true">↗</span>
+                          </a>
+                        </div>
                       ) : card.imgPath.includes("exp3.png") ? (
                         <div className="space-y-5">
                           <div>
