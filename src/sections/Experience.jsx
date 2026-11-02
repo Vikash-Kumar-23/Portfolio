@@ -202,9 +202,11 @@ const Experience = () => {
                       ) : card.imgPath.includes("exp1.png") ? (
                         <div className="space-y-5">
                           <div className="flex items-center justify-start h-10">
-                            <span className="text-red-500 font-bold text-5xl md:text-3xl tracking-tight">
-                              zomato
-                            </span>
+                            <img
+                              src={card.imgPath}
+                              alt="Zomato project"
+                              className="md:h-10 h-8 object-contain rounded-md"
+                            />
                           </div>
                           <a
                             href={card.liveDemoLink}
